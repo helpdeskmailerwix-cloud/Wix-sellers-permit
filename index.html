@@ -287,50 +287,60 @@
       </article>
     </section>
 
- <!-- Modal -->
-<div class="modal-overlay" id="modal-overlay" style="display:none;">
-  <div class="modal-card" style="max-width:500px; margin:20px auto; padding:20px; background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
-    <button class="modal-close" id="modal-close" style="float:right; background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; display:flex; align-items:center; justify-content:center;">
+  <div class="modal-card" style="max-width:500px; width:90%; background:#fff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.25); overflow:hidden;">
     
-    <div id="selected-plan" style="margin-bottom:12px; font-weight:bold; color:#0c4db3;"></div>
-    <h3>Application Form</h3>
+    <!-- Header -->
+    <div style="padding:20px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
+      <h3 style="margin:0; font-size:20px; color:#0c4db3;">Application Form</h3>
+      <button class="modal-close" id="modal-close" style="background:none; border:none; font-size:24px; cursor:pointer; color:#666;">&times;</button>
+    </div>
 
-    <form id="seller-form" action="https://formspree.io/f/xnngqreo" method="POST">
-      <!-- Hidden selected plan -->
-      <input type="hidden" name="plan" id="form-plan" value="">
+    <!-- Body -->
+    <div style="padding:20px;">
+      <div id="selected-plan" style="margin-bottom:15px; font-weight:600; color:#0c4db3;"></div>
 
-      <label for="email">Email Address</label>
-      <input id="email" name="email" type="email" placeholder="you@example.com" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;">
+      <form id="seller-form" action="https://formspree.io/f/xnngqreo" method="POST">
+        <input type="hidden" name="plan" id="form-plan" value="">
 
-      <label for="store">Store URL</label>
-      <input id="store" name="store" type="text" placeholder="https://yourstore.wixsite.com" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;">
+        <label for="email" style="font-weight:500;">Email Address</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required style="width:100%; padding:12px; margin:8px 0 16px; border:1px solid #ccc; border-radius:8px;">
 
-      <label for="location">Location of Operation</label>
-      <select id="location" name="location" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;">
-        <option value="">Select your location</option>
-        <option>United States</option>
-        <option>Canada</option>
-        <option>United Kingdom</option>
-        <option>Australia</option>
-        <option>European Union</option>
-        <option>Other</option>
-      </select>
+        <label for="store" style="font-weight:500;">Store URL</label>
+        <input id="store" name="store" type="text" placeholder="https://yourstore.com" required style="width:100%; padding:12px; margin:8px 0 16px; border:1px solid #ccc; border-radius:8px;">
 
-      <label for="business">Business Name</label>
-      <input id="business" name="business" type="text" placeholder="Your business name" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;">
+        <label for="location" style="font-weight:500;">Location of Operation</label>
+        <select id="location" name="location" required style="width:100%; padding:12px; margin:8px 0 16px; border:1px solid #ccc; border-radius:8px;">
+          <option value="">Select your location</option>
+          <option>United States</option>
+          <option>Canada</option>
+          <option>United Kingdom</option>
+          <option>Australia</option>
+          <option>European Union</option>
+          <option>Other</option>
+        </select>
 
-      <div style="margin-top:10px; margin-bottom:10px;">
-        <label><input type="checkbox" id="agree" required> I agree to the terms and conditions</label>
+        <label for="business" style="font-weight:500;">Business Name</label>
+        <input id="business" name="business" type="text" placeholder="Your business name" required style="width:100%; padding:12px; margin:8px 0 16px; border:1px solid #ccc; border-radius:8px;">
+
+        <div style="margin-bottom:16px;">
+          <label style="font-size:14px;">
+            <input type="checkbox" id="agree" required> I agree to the terms and conditions
+          </label>
+        </div>
+
+        <button type="submit" style="width:100%; padding:14px; background:#0c4db3; color:#fff; border:none; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; transition:0.3s;">
+          Submit Application
+        </button>
+      </form>
+
+      <!-- Success popup message -->
+      <div id="success-message" style="display:none; margin-top:20px; padding:18px; background:#f0faf4; border:1px solid #2ecc71; border-radius:10px; color:#1d7a3c; font-size:15px; line-height:1.5;">
+        ✅ Thank you for submitting your application.  
+        Our team will review your information within the next <strong>2–3 hours</strong>.  
+        Once approved, you’ll receive a payment invoice at the email address provided.
       </div>
-
-      <div style="margin-top:12px;">
-        <button class="btn" type="submit" style="width:100%; padding:12px; background:#0c4db3; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:16px;">Submit Application</button>
-      </div>
-    </form>
-
-    <!-- Success popup message -->
-    <div id="success-message" style="display:none; margin-top:20px; padding:15px; background:#e6f9e6; border:1px solid #2ecc71; border-radius:8px; color:#2c662d; font-weight:bold;">
-      ✅ Your response has been received and is currently under review. Please note that this process typically takes 2 to 3 hours. Once the review is complete, a payment invoice will be sent to your email address via Upwork.
     </div>
   </div>
 </div>
@@ -340,37 +350,34 @@
   const successMessage = document.getElementById("success-message");
 
   form.addEventListener("submit", async function(event) {
-    event.preventDefault(); // stop redirect
+    event.preventDefault(); 
 
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries()); // convert to JSON
 
     try {
       const response = await fetch(form.action, {
         method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        }
+        body: formData,
+        headers: { "Accept": "application/json" }
       });
 
       if (response.ok) {
-        form.style.display = "none"; // hide form
-        successMessage.style.display = "block"; // show success
+        form.reset();
+        form.style.display = "none";
+        successMessage.style.display = "block";
       } else {
-        alert("Oops! Something went wrong, please try again.");
+        alert("Oops! Something went wrong. Please try again.");
       }
     } catch (error) {
       alert("Error submitting form. Please check your internet connection.");
     }
   });
 
-  // Modal close button handler
   document.getElementById("modal-close").addEventListener("click", function() {
     document.getElementById("modal-overlay").style.display = "none";
   });
 </script>
+
 
 
     <footer class="footer">
@@ -429,5 +436,6 @@
   </script>
 </body>
 </html>
+
 
 
