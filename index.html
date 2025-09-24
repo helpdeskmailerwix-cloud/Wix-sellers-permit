@@ -6,229 +6,38 @@
   <title>Wix Seller Plans</title>
   <meta name="description" content="Wix Seller Permit Plans - choose the right compliance plan for your business" />
   
-  <!-- ✅ Correct favicon placement -->
   <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/de/96/a6/de96a671fb922d4f362fe7b41b0c6f66.jpg" />
-  
   <style>
-    body {
-      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #f0f4ff, #e6f7ff);
-      color: #1a1a1a;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    header img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin: 10px 0 5px;
-      color: #0c4db3;
-      font-weight: 700;
-    }
-
-    h2 {
-      color: #333;
-      font-size: 1.4em;
-    }
-
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-    }
-
-    .plan {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(12px);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .plan:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-    }
-
-    .price {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 10px 0;
-      color: #0c4db3;
-    }
-
-    .features li {
-      list-style: none;
-      margin: 6px 0;
-      position: relative;
-      padding-left: 26px;
-    }
-
-    .features li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      color: #00bfa6;
-      font-weight: bold;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #0c4db3, #00bfa6);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      border: none;
-      transition: all 0.3s ease;
-      margin-top: 12px;
-    }
-
-    .btn:hover {
-      background: linear-gradient(135deg, #0a3d8f, #009e87);
-      transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    }
-
-    .plan-save {
-      color: #009e87;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .popular-stamp {
-      display: inline-block;
-      background: #ffefb0;
-      color: #b36b00;
-      font-weight: 600;
-      font-size: 0.95em;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-left: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-
-    /* Modal */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-      opacity: 1;
-    }
-
-    .modal-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px;
-      max-width: 420px;
-      width: 90%;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.2);
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-    }
-
-    .modal-overlay.active .modal-card {
-      transform: translateY(0);
-    }
-
-    .modal-close {
-      position: absolute;
-      right: 14px;
-      top: 10px;
-      font-size: 1.8em;
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: #666;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin: 8px 0;
-    }
-
-    .footer {
-      background: #0c4db3;
-      color: #fff;
-      padding: 40px 20px;
-      margin-top: 60px;
-    }
-
-    .footer-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      text-align: left;
-    }
-
-    .footer h4 {
-      margin-bottom: 12px;
-      font-size: 1.1em;
-      border-bottom: 2px solid #00bfa6;
-      display: inline-block;
-      padding-bottom: 4px;
-    }
-
-    .footer ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer ul li {
-      margin: 6px 0;
-    }
-
-    .footer ul li a {
-      color: #e6f7ff;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer ul li a:hover {
-      color: #00bfa6;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 14px;
-      color: #cce6ff;
-    }
+    body {font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin:0; padding:0; background:linear-gradient(135deg,#f0f4ff,#e6f7ff); color:#1a1a1a;}
+    .container {max-width:1100px;margin:40px auto;padding:20px;}
+    header{text-align:center;margin-bottom:40px;}
+    header img{width:60px;height:60px;object-fit:contain;}
+    h1{font-size:2.5em;margin:10px 0 5px;color:#0c4db3;font-weight:700;}
+    h2{color:#333;font-size:1.4em;}
+    .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;}
+    .plan{background:rgba(255,255,255,0.9);border-radius:16px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,0.08);transition:transform 0.25s ease,box-shadow 0.25s ease;}
+    .plan:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,0.12);}
+    .price{font-size:22px;font-weight:700;margin:10px 0;color:#0c4db3;}
+    .features li{list-style:none;margin:6px 0;position:relative;padding-left:26px;}
+    .features li::before{content:"✔";position:absolute;left:0;color:#00bfa6;font-weight:bold;}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,#0c4db3,#00bfa6);color:#fff;text-decoration:none;font-weight:600;border:none;transition:all 0.3s ease;margin-top:12px;}
+    .btn:hover{background:linear-gradient(135deg,#0a3d8f,#009e87);transform:scale(1.05);box-shadow:0 6px 16px rgba(0,0,0,0.15);}
+    .plan-save{color:#009e87;font-weight:600;margin-bottom:6px;}
+    .popular-stamp{display:inline-block;background:#ffefb0;color:#b36b00;font-weight:600;font-size:0.95em;padding:4px 12px;border-radius:20px;margin-left:10px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:1000;opacity:0;transition:opacity 0.3s ease;}
+    .modal-overlay.active{display:flex;opacity:1;}
+    .modal-card{background:#fff;border-radius:16px;padding:24px;max-width:420px;width:90%;box-shadow:0 12px 36px rgba(0,0,0,0.2);position:relative;transform:translateY(20px);transition:transform 0.3s ease;}
+    .modal-overlay.active .modal-card{transform:translateY(0);}
+    .modal-close{position:absolute;right:14px;top:10px;font-size:1.8em;border:none;background:none;cursor:pointer;color:#666;}
+    input,select{width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin:8px 0;}
+    .footer{background:#0c4db3;color:#fff;padding:40px 20px;margin-top:60px;}
+    .footer-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;text-align:left;}
+    .footer h4{margin-bottom:12px;font-size:1.1em;border-bottom:2px solid #00bfa6;display:inline-block;padding-bottom:4px;}
+    .footer ul{list-style:none;padding:0;}
+    .footer ul li{margin:6px 0;}
+    .footer ul li a{color:#e6f7ff;text-decoration:none;transition:color 0.3s;}
+    .footer ul li a:hover{color:#00bfa6;}
+    .footer-bottom{text-align:center;margin-top:30px;font-size:14px;color:#cce6ff;}
   </style>
 </head>
 <body>
@@ -293,16 +102,12 @@
       </article>
     </section>
 
-<!-- Modal -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal-card">
-    <!-- Header -->
     <div style="padding:20px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
       <h3 style="margin:0; font-size:20px; color:#0c4db3;">Application Form</h3>
       <button class="modal-close" id="modal-close">&times;</button>
     </div>
-
-    <!-- Body -->
     <div style="padding:20px;">
       <div id="selected-plan" style="margin-bottom:15px; font-weight:600; color:#0c4db3;"></div>
 
@@ -331,7 +136,7 @@
 
         <div style="margin-bottom:16px;">
           <label style="font-size:14px;">
-            <input type="checkbox" id="agree" required> I agree to the terms and conditions
+            <input type="checkbox" id="agree" name="agree" required> I agree to the terms and conditions
           </label>
         </div>
 
@@ -340,10 +145,9 @@
         </button>
       </form>
 
-      <!-- Success popup message -->
       <div id="success-message" style="display:none; margin-top:20px; padding:18px; background:#f0faf4; border:1px solid #2ecc71; border-radius:10px; color:#1d7a3c; font-size:15px; line-height:1.5;">
-        ✅ Thank you for submitting your application.  
-        Our team will review your information within the next <strong>2–3 hours</strong>.  
+        ✅ Thank you for submitting your application.<br>
+        Our team will review your information within the next <strong>2–3 hours</strong>.<br>
         Once approved, you’ll receive a payment invoice at the email address provided.
       </div>
     </div>
@@ -355,6 +159,31 @@
   const successMessage = document.getElementById("success-message");
   const modalOverlay = document.getElementById("modal-overlay");
   const closeBtn = document.getElementById("modal-close");
+
+  document.querySelectorAll('.plans .btn').forEach(function(btn) {
+    btn.addEventListener('click', function(ev) {
+      ev.preventDefault();
+      var planName = this.closest('.plan').querySelector('h2').childNodes[0].textContent.trim();
+      modalOverlay.classList.add('active');
+      document.getElementById('form-plan').value = planName;
+      document.getElementById('selected-plan').textContent = 'Selected Plan: ' + planName;
+    });
+  });
+
+  closeBtn.addEventListener("click", function() {
+    modalOverlay.classList.remove('active');
+    setTimeout(() => { modalOverlay.style.display = 'none'; }, 300);
+  });
+
+  modalOverlay.addEventListener("transitionend", () => {
+    if (!modalOverlay.classList.contains('active')) {
+      modalOverlay.style.display = 'none';
+      form.style.display = "block";
+      successMessage.style.display = "none";
+    } else {
+      modalOverlay.style.display = 'flex';
+    }
+  });
 
   form.addEventListener("submit", async function(event) {
     event.preventDefault(); 
@@ -379,69 +208,16 @@
       alert("Error submitting form. Please check your internet connection.");
     }
   });
-
-  document.querySelectorAll('.plans .btn').forEach(function(btn) {
-    btn.addEventListener('click', function(ev) {
-      ev.preventDefault();
-      var planName = this.closest('.plan').querySelector('h2').textContent;
-      modalOverlay.classList.add('active');
-      document.getElementById('form-plan').value = planName;
-      document.getElementById('selected-plan').textContent = 'Selected Plan: ' + planName;
-    });
-  });
-
-  closeBtn.addEventListener("click", function() {
-    modalOverlay.classList.remove('active');
-    setTimeout(() => { modalOverlay.style.display = 'none'; }, 300);
-  });
-
-  // Ensure modal resets after close
-  modalOverlay.addEventListener("transitionend", () => {
-    if (!modalOverlay.classList.contains('active')) {
-      modalOverlay.style.display = 'none';
-      form.style.display = "block";
-      successMessage.style.display = "none";
-    } else {
-      modalOverlay.style.display = 'flex';
-    }
-  });
 </script>
 
     <footer class="footer">
       <div class="footer-container">
-        <div>
-          <h4>About Us</h4>
-          <p>We provide compliance solutions for Wix merchants, ensuring your business runs smoothly and legally.</p>
-        </div>
-        <div>
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#plans">Plans</a></li>
-            <li><a href="#apply">Apply</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Follow Us</h4>
-          <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">X</a></li>
-            <li><a href="#">LinkedIn</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <ul>
-            <li>Email: support@wixseller.com</li>
-            <li>Address:100 Gansevoort St., New York, NY 10014 Wix.com Ltd. • Wix.com Inc. • Wix.com</li>
-          </ul>
-        </div>
+        <div><h4>About Us</h4><p>We provide compliance solutions for Wix merchants, ensuring your business runs smoothly and legally.</p></div>
+        <div><h4>Quick Links</h4><ul><li><a href="#">Home</a></li><li><a href="#plans">Plans</a></li><li><a href="#apply">Apply</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div><h4>Follow Us</h4><ul><li><a href="#">Facebook</a></li><li><a href="#">Instagram</a></li><li><a href="#">X</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>Email: support@wixseller.com</li><li>Address:100 Gansevoort St., New York, NY 10014 Wix.com Ltd. • Wix.com Inc. • Wix.com</li></ul></div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 Wix Seller Permit. All rights reserved.</p>
-      </div>
+      <div class="footer-bottom"><p>© 2025 Wix Seller Permit. All rights reserved.</p></div>
     </footer>
   </div>
 </body>
