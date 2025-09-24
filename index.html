@@ -20,14 +20,13 @@
     .price{font-size:22px;font-weight:700;margin:10px 0;color:#0c4db3;}
     .features li{list-style:none;margin:6px 0;position:relative;padding-left:26px;}
     .features li::before{content:"✔";position:absolute;left:0;color:#00bfa6;font-weight:bold;}
-    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,#0c4db3,#00bfa6);color:#fff;text-decoration:none;font-weight:600;border:none;transition:all 0.3s ease;margin-top:12px;}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,#0c4db3,#00bfa6);color:#fff;text-decoration:none;font-weight:600;border:none;transition:all 0.3s ease;margin-top:12px;cursor:pointer;}
     .btn:hover{background:linear-gradient(135deg,#0a3d8f,#009e87);transform:scale(1.05);box-shadow:0 6px 16px rgba(0,0,0,0.15);}
     .plan-save{color:#009e87;font-weight:600;margin-bottom:6px;}
     .popular-stamp{display:inline-block;background:#ffefb0;color:#b36b00;font-weight:600;font-size:0.95em;padding:4px 12px;border-radius:20px;margin-left:10px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
-    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:1000;opacity:0;transition:opacity 0.3s ease;}
-    .modal-overlay.active{display:flex;opacity:1;}
-    .modal-card{background:#fff;border-radius:16px;padding:24px;max-width:420px;width:90%;box-shadow:0 12px 36px rgba(0,0,0,0.2);position:relative;transform:translateY(20px);transition:transform 0.3s ease;}
-    .modal-overlay.active .modal-card{transform:translateY(0);}
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:1000;}
+    .modal-overlay.active{display:flex;}
+    .modal-card{background:#fff;border-radius:16px;padding:24px;max-width:420px;width:90%;box-shadow:0 12px 36px rgba(0,0,0,0.2);position:relative;}
     .modal-close{position:absolute;right:14px;top:10px;font-size:1.8em;border:none;background:none;cursor:pointer;color:#666;}
     input,select{width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin:8px 0;}
     .footer{background:#0c4db3;color:#fff;padding:40px 20px;margin-top:60px;}
@@ -59,7 +58,7 @@
           <li>Basic compliance</li>
           <li>Email support</li>
         </ul>
-        <a class="btn" href="#apply?plan=3months">Select Plan</a>
+        <button class="btn" data-plan="3 Months Plan">Select Plan</button>
       </article>
 
       <article class="plan" id="plan-6m">
@@ -72,7 +71,7 @@
           <li>Priority support</li>
           <li>Compliance updates</li>
         </ul>
-        <a class="btn" href="#apply?plan=6months">Select Plan</a>
+        <button class="btn" data-plan="6 Months Plan">Select Plan</button>
       </article>
 
       <article class="plan" id="plan-10m">
@@ -85,7 +84,7 @@
           <li>24/7 support</li>
           <li>Compliance monitoring</li>
         </ul>
-        <a class="btn" href="#apply?plan=10months">Select Plan</a>
+        <button class="btn" data-plan="10 Months Plan">Select Plan</button>
       </article>
 
       <article class="plan" id="plan-1y">
@@ -98,7 +97,7 @@
           <li>Dedicated account manager</li>
           <li>Full compliance package</li>
         </ul>
-        <a class="btn" href="#apply?plan=1year">Select Plan</a>
+        <button class="btn" data-plan="1 Year Plan">Select Plan</button>
       </article>
     </section>
 
@@ -115,13 +114,13 @@
         <input type="hidden" name="plan" id="form-plan" value="">
 
         <label for="email" style="font-weight:500;">Email Address</label>
-        <input id="email" name="email" type="email" placeholder="you@example.com" required style="width:100%; padding:12px; margin:8px 0 16px; border:1px solid #ccc; border-radius:8px;">
+        <input id="email" name="email" type="email" placeholder="you@example.com" required>
 
         <label for="store" style="font-weight:500;">Store URL</label>
-        <input id="store" name="store" type="text" placeholder="https://yourstore.com" required style="width:100%; padding:12px; margin:8px 0 16px; border:1px solid #ccc; border-radius:8px;">
+        <input id="store" name="store" type="text" placeholder="https://yourstore.com" required>
 
         <label for="location" style="font-weight:500;">Location of Operation</label>
-        <select id="location" name="location" required style="width:100%; padding:12px; margin:8px 0 16px; border:1px solid #ccc; border-radius:8px;">
+        <select id="location" name="location" required>
           <option value="">Select your location</option>
           <option>United States</option>
           <option>Canada</option>
@@ -132,7 +131,7 @@
         </select>
 
         <label for="business" style="font-weight:500;">Business Name</label>
-        <input id="business" name="business" type="text" placeholder="Your business name" required style="width:100%; padding:12px; margin:8px 0 16px; border:1px solid #ccc; border-radius:8px;">
+        <input id="business" name="business" type="text" placeholder="Your business name" required>
 
         <div style="margin-bottom:16px;">
           <label style="font-size:14px;">
@@ -163,7 +162,7 @@
   document.querySelectorAll('.plans .btn').forEach(function(btn) {
     btn.addEventListener('click', function(ev) {
       ev.preventDefault();
-      var planName = this.closest('.plan').querySelector('h2').childNodes[0].textContent.trim();
+      const planName = this.getAttribute('data-plan');
       modalOverlay.classList.add('active');
       document.getElementById('form-plan').value = planName;
       document.getElementById('selected-plan').textContent = 'Selected Plan: ' + planName;
@@ -172,16 +171,11 @@
 
   closeBtn.addEventListener("click", function() {
     modalOverlay.classList.remove('active');
-    setTimeout(() => { modalOverlay.style.display = 'none'; }, 300);
   });
 
-  modalOverlay.addEventListener("transitionend", () => {
-    if (!modalOverlay.classList.contains('active')) {
-      modalOverlay.style.display = 'none';
-      form.style.display = "block";
-      successMessage.style.display = "none";
-    } else {
-      modalOverlay.style.display = 'flex';
+  modalOverlay.addEventListener("click", function(e) {
+    if (e.target === modalOverlay) {
+      modalOverlay.classList.remove('active');
     }
   });
 
